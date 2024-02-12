@@ -10,3 +10,6 @@ func _on_input_event(viewport, event, shape_idx):
 			# オブジェクトを消す
 			queue_free()
 			Common.emCount -=1
+
+var em_X:float
+var em_Y:float
