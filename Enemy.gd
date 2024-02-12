@@ -9,3 +9,4 @@ func _on_input_event(viewport, event, shape_idx):
 		if event.is_pressed():
 			# オブジェクトを消す
 			queue_free()
+			Common.emCount -=1
