@@ -21,13 +21,24 @@ var em_Y:float
 
 func _physics_process(delta):
 	
-
-	count2 += 1
+	count2 = count2 + 1		
 	if count2 == 1:
-		var bullet = Bullet.instantiate()
-		bullet.start(-90,  100)
-		# ルートノードを取得
-		add_child(bullet)
-		await get_tree().create_timer(1).timeout
+		#for i in range(1):
+		for i in range(2):
+			pass
+			#degcount += 10 +delta*10 #発射角度
+			degcount +=10
+			bullet(position.x,position.y,-90+degcount, 100, 1)
+		await get_tree().create_timer(0.5).timeout
 		count2 = 0
-		
+
+# 弾を撃つ
+func bullet(em_X,em_Y,deg, speed, delay=1):
+	if delay > 0:
+		# 遅延して発射する
+		await get_tree().create_timer(delay).timeout
+	
+	var bullet = Bullet.instantiate()
+	bullet.start(0, 0, deg, speed)
+	# ルートノードを取得
+	add_child(bullet)
