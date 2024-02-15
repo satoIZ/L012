@@ -13,7 +13,7 @@ config_version=5
 config/name="L012"
 run/main_scene="res://enemy1/enemyA1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://enemy1/icon.svg"
+config/icon="res://icon.svg"
 
 [autoload]
 
