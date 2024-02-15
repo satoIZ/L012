@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="L012"
-run/main_scene="res://main.tscn"
+run/main_scene="res://enemy1/enemyA1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://enemy1/icon.svg"
 
 [autoload]
 
-Common="*res://Common.gd"
+Common="*res://enemy1/CommonE1.gd"
 
 [display]
 
