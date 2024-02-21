@@ -3,11 +3,16 @@ var Im_X:float
 var Im_Y:float
 
 #アイテムのセット
-func setPos(x, y):
+func setPos(x, y,ItemName):
 	position = Vector2(x, y)
 	Im_X = x
 	Im_Y = y
+	var label = Label.new()
+	label.text = ItemName
+	label.add_theme_color_override("font_color", Color(1, 0, 0, 1))
+	label.add_theme_font_size_override("font_size", 50)
 	
+	add_child(label)
 
 var velocity = Vector2()
 func _process(delta):
