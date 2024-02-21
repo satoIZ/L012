@@ -3,6 +3,7 @@ extends Node2D
 var xPos = 250
 var yPos = 100
 var Enemy = preload("res://enemy1/enemy1.tscn")
+#アイテム発生用に追加
 var Item = preload("res://Item/item.tscn")
 var ItemFlag:bool = false
 var iniFlag:bool = true
