@@ -45,4 +45,4 @@ func bullet(em_X,em_Y,deg, speed, delay=1):
 	bullet.name = "bullet" + str(bcnt)
 	# ルートノードを取得
 	add_child(bullet)
-	print(bullet.name)
+	#print(bullet.name)
