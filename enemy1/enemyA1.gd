@@ -9,7 +9,9 @@ var ItemFlag:bool = false
 var iniFlag:bool = true
 func _ready():
 	iniFlag = true
-	
+
+var Items = ["ItemA","ItemB","ItemC"]
+
 func _process(delta):
 
 	var cnt = 0 #enemyのカウント
@@ -50,11 +52,22 @@ func _process(delta):
 		for i in range(1):
 			var Item = Item.instantiate()
 			var item_x = randi_range(0, 10)
-			print(item_x*100)
-			Item.setPos( item_x*100, position.y + yPos+200)
-			Item.name = "Item" + str(i)
+			#print(item_x*100)
+			Item.name = Items[randi_range(0, 2)]			
+			Item.setPos( item_x*100, position.y + yPos+200,Item.name)
+			#Item.name = "Item" + str(i)			
 			self.add_child(Item)
 	
 		ItemFlag = false
 	
-	
+	#-----ツリーのノード名を検索
+	for child in get_children():
+		#print(child.name)
+		if "Item" in child.name:
+			cnt += 1
+			print("Item:" + child.name)
+	#print("個数：" + str(cnt))
+	if cnt == 0:
+		#print("NoEnemy" )
+		pass
+	#----------------------
