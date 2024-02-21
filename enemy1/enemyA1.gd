@@ -5,7 +5,10 @@ var yPos = 100
 var Enemy = preload("res://enemy1/enemy1.tscn")
 var Item = preload("res://Item/item.tscn")
 var ItemFlag:bool = false
-
+var iniFlag:bool = true
+func _ready():
+	iniFlag = true
+	
 func _process(delta):
 
 	var cnt = 0 #enemyのカウント
@@ -30,8 +33,15 @@ func _process(delta):
 			Enemy.setPos(position.x + i*xPos+100, position.y + yPos)
 			Enemy.name = "Enemy" + str(i)
 			self.add_child(Enemy)
-			ItemFlag = true
+
 			#Common.emCount += 1
+			
+		#初回にアイテムを作成しない。
+		if iniFlag == true:
+			ItemFlag = false
+			iniFlag = false
+		else:
+			ItemFlag = true
 
 	#----エネミーが0になった場合アイテムをスポーンする
 	if ItemFlag == true:
