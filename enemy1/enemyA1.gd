@@ -31,13 +31,13 @@ func _process(delta):
 	#----エネミーが0になった場合にスポーンする
 	if cnt == 0:
 	#if Common.emCount == 0:
-		for i in range(3):
+		for i in range(1): #出現個数
 			var Enemy = Enemy.instantiate()
 			Enemy.setPos(position.x + i*xPos+100, position.y + yPos)
 			Enemy.name = "Enemy" + str(i)
 			self.add_child(Enemy)
 
-			#Common.emCount += 1
+			#Common.emCount += 1 
 			
 		#初回にアイテムを作成しない。
 		if iniFlag == true:
