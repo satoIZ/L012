@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6mjaaqx4hq7o"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_v4ei8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o8ujf"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v4ei8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o8ujf")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 50
+text = "player"
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-24, 23, 1, -47, 27, 29, -11, 28)
