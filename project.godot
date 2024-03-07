@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Common="*res://Common.gd"
+Bullet2Ex="*res://bullet_2_ex.gd"
 
 [display]
 
