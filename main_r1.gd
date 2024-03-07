@@ -1,6 +1,6 @@
 extends Node2D
 
-var target = preload("res://target.tscn")
+var target = preload("res://target/target.tscn")
 
 func _ready():
 	#targetの設置
