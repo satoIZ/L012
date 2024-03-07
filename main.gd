@@ -36,31 +36,3 @@ func _process(delta):
 			
 			Common.emCount += 1
 
-			#count2 += 1
-			#if count2 == 1:
-			
-			#for ii in range(3):			
-				#await get_tree().create_timer(1).timeout
-				#addBullet(position.x + i*xPos+100, position.y + yPos)
-				
-				#count2 = 0
-#enemyから弾を射出
-#弾の設定
-#var Bullet   = preload("res://bullet.tscn")
-#var count2:int
-#var degcount:float
-#var em_X:float
-#var em_Y:float
-
-#func addBullet(x,y):
-#
-	##count2 += 1
-	##if count2 == 1:
-		#var bullet = Bullet.instantiate()
-		#bullet.start(-45,  100)
-		#bullet.setPos(x,y)
-		## ルートノードを取得
-		#add_child(bullet)
-		#await get_tree().create_timer(1).timeout
-		#count2 = 0
-		
