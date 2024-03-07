@@ -6,7 +6,7 @@ var Enemy = preload("res://enemy.tscn")
 
 func _ready():
 	
-	Common.bullets = $Bullets
+	Common.bullets = $EnAssy/Bullets
 	
 	
 func _process(delta):
