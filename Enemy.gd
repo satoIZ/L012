@@ -27,11 +27,11 @@ func _physics_process(delta):
 		var bullet = Bullet.instantiate()
 		bullet.start(-90,  100)
 
-		add_child(bullet) #ここで作成するとEnemyが消されると弾も消える。
+		#add_child(bullet) #ここで作成するとEnemyが消されると弾も消える。
 		
 		# ルートノードを取得
-		#bullet.setPos(em_X, em_Y)
-		#Common.bullets.add_child(bullet)
+		bullet.setPos(em_X, em_Y)
+		Common.bullets.add_child(bullet)
 		await get_tree().create_timer(1).timeout
 		count2 = 0
 		
