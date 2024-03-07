@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5pjfwieyp8sq"]
+
+[ext_resource type="Script" path="res://enemy/en_assy.gd" id="1_gv7rm"]
+
+[node name="EnAssy" type="Node2D"]
+script = ExtResource("1_gv7rm")
+
+[node name="Bullets" type="Node2D" parent="."]
