@@ -3,6 +3,9 @@ extends Area2D
 # 移動方向
 var velocity = Vector2()
 
+func setPos(x, y):
+	position = Vector2(x, y)
+	
 # 開始
 func start(deg, speed):
 	velocity.x = speed * cos(deg_to_rad(deg))
