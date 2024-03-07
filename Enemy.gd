@@ -19,6 +19,9 @@ var degcount:float
 var em_X:float
 var em_Y:float
 
+#弾2の設定
+var Bullet2   = preload("res://bullet_2.tscn")
+
 func _physics_process(delta):
 		#pass
 
@@ -33,5 +36,21 @@ func _physics_process(delta):
 		bullet.setPos(em_X, em_Y)
 		Common.bullets.add_child(bullet)
 		await get_tree().create_timer(1).timeout
+		
+		#-----弾2----------
+		var bullet2 = Bullet2.instantiate()
+		bullet2.setPos(em_X, em_Y)
+		
+		# ルートノードを取得
+		#var main_node = get_owner()
+		#bullet2.set_target($Target)
+		var deg = Bullet2Ex.get_aim(self)
+		#print(deg)
+		
+		bullet2.start( deg, 100)
+		# ルートノードを取得
+		Common.bullets.add_child(bullet2)
+		#-------------------
+		
 		count2 = 0
 		
