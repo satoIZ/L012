@@ -16,3 +16,11 @@ func _process(delta):
 		velocity.x += 1 # moveright
 
 	position += velocity.normalized() * speed
+
+
+func _on_area_entered(area):
+	#print(area)
+	#if area.name == "Ball":
+	if area is Bullet2 || area is Bullet :
+		queue_free()	
+	pass # Replace with function body.
