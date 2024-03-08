@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Bullet
+
 # 移動方向
 var velocity = Vector2()
 
