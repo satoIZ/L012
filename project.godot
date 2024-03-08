@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Common="*res://Common.gd"
-Bullet2Ex="*res://enemy/bullet/bullet_2_ex.gd"
+Bullet2Ex="*res://enemy/bullet2/bullet_2_ex.gd"
 
 [display]
 
