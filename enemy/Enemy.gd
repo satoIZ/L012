@@ -20,7 +20,7 @@ var em_X:float
 var em_Y:float
 
 #弾2の設定
-var Bullet2   = preload("res://enemy/bullet/bullet_2.tscn")
+var Bullet2   = preload("res://enemy/bullet2/bullet_2.tscn")
 
 func _physics_process(delta):
 		#pass
