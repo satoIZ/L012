@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="L012"
+config/tags=PackedStringArray("enemy")
 run/main_scene="res://enemy1/enemyA1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
