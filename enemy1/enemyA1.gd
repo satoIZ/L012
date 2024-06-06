@@ -10,15 +10,16 @@ var Item = preload("res://Item/item.tscn")
 var ItemFlag:bool = false
 var iniFlag:bool = true
 
+
 #UIの設定
-var UI = preload("res://UI/hdu.tscn")
+var UI = preload("res://UI/hud.tscn")
 
 
 func _ready():
 	iniFlag = true
 
 	var addUI = UI.instantiate()
-	#add_child(addUI)
+	add_child(addUI)
 
 
 var Items = ["ItemA","ItemB","ItemC"]
