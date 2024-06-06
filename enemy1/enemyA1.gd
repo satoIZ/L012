@@ -13,14 +13,15 @@ var iniFlag:bool = true
 
 #UIの設定
 var UI = preload("res://UI/hud.tscn")
-
+#@onready var hud_lab = $HUD/VBox/Label # 追加
 
 func _ready():
 	iniFlag = true
 
 	var addUI = UI.instantiate()
 	add_child(addUI)
-
+	print(addUI)
+	$HUD/VBox/Label.text = "stage"
 
 var Items = ["ItemA","ItemB","ItemC"]
 
