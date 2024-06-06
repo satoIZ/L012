@@ -1,14 +1,25 @@
 extends Node2D
 
+#enemyの設定
+var Enemy = preload("res://enemy1/enemy1.tscn")
 var xPos = 250
 var yPos = 100
-var Enemy = preload("res://enemy1/enemy1.tscn")
+
 #アイテム発生用に追加
 var Item = preload("res://Item/item.tscn")
 var ItemFlag:bool = false
 var iniFlag:bool = true
+
+#UIの設定
+var UI = preload("res://UI/hdu.tscn")
+
+
 func _ready():
 	iniFlag = true
+
+	var addUI = UI.instantiate()
+	#add_child(addUI)
+
 
 var Items = ["ItemA","ItemB","ItemC"]
 
