@@ -20,10 +20,12 @@ func _ready():
 
 	var addUI = UI.instantiate()
 	add_child(addUI)
-	print(addUI)
-	$HUD/VBox/Label.text = "stage"
+	#print(addUI)
+	$HUD/VBox/Label.text = "stage:1"
 
 var Items = ["ItemA","ItemB","ItemC"]
+
+var stageCnt:int = 1
 
 func _process(delta):
 
@@ -41,7 +43,7 @@ func _process(delta):
 		pass
 	#----------------------
 	
-	#----エネミーが0になった場合にスポーンする
+	#----エネミーが0になった場合にエネミーをスポーンする
 	if cnt == 0:
 	#if Common.emCount == 0:
 		for i in range(3):
@@ -72,6 +74,10 @@ func _process(delta):
 			self.add_child(Item)
 	
 		ItemFlag = false
+	
+		#ステージ番号を進める
+		stageCnt += 1
+		$HUD/VBox/Label.text = "stage:" + str(stageCnt)
 	
 	#-----ツリーのノード名を検索
 	for child in get_children():
