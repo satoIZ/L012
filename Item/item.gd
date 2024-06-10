@@ -14,7 +14,10 @@ func setPos(x, y,ItemName):
 	
 	add_child(label)
 
+	ItemName_del = ItemName
+
 var velocity = Vector2()
+var ItemName_del
 func _process(delta):
 	#アイテムの落下
 	velocity.y = 100
@@ -25,6 +28,16 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		# マウスの入力があった
 		if event.is_pressed():
+			
+			#取得したアイテムをカウント
+			#print(str(ItemName_del))
+			if str(ItemName_del).find("ItemA")>=0:
+				Global.ItemAcnt +=1
+			elif str(ItemName_del).find("ItemB")>=0:
+				Global.ItemBcnt +=1
+			elif str(ItemName_del).find("ItemC")>=0:
+				Global.ItemCcnt +=1
+								
 			# オブジェクトを消す
 			queue_free()
 
