@@ -22,7 +22,7 @@ func _ready():
 	add_child(addUI)
 	#print(addUI)
 	$HUD/VBox/Label.text = "stage:1"
-
+		
 var Items = ["ItemA","ItemB","ItemC"]
 
 var stageCnt:int = 1
@@ -46,9 +46,12 @@ func _process(delta):
 	#----エネミーが0になった場合にエネミーをスポーンする
 	if cnt == 0:
 	#if Common.emCount == 0:
-		for i in range(3):
+		for i in range(5):
 			var Enemy = Enemy.instantiate()
-			Enemy.setPos(position.x + i*xPos+100, position.y + yPos)
+			var enemy_x = randi_range(-3, 5)
+			var enemy_y = randi_range(-2, 2)			
+			Enemy.setPos(position.x + enemy_x*100 + 450, enemy_y*100 + 300)
+			#Enemy.setPos(position.x + i*xPos+200, position.y + yPos)			
 			Enemy.name = "Enemy" + str(i)
 			self.add_child(Enemy)
 
@@ -66,7 +69,7 @@ func _process(delta):
 	#if Common.emCount == 0:
 		for i in range(1):
 			var Item = Item.instantiate()
-			var item_x = randi_range(0, 10)
+			var item_x = randi_range(1, 9)
 			#print(item_x*100)
 			Item.name = Items[randi_range(0, 2)]			
 			Item.setPos( item_x*100, position.y + yPos+200,Item.name)
@@ -84,9 +87,13 @@ func _process(delta):
 		#print(child.name)
 		if "Item" in child.name:
 			cnt += 1
-			print("Item:" + child.name)
+			#print("Item:" + child.name)
 	#print("個数：" + str(cnt))
 	if cnt == 0:
 		#print("NoEnemy" )
 		pass
 	#----------------------
+
+	$HUD/VBox/ItemA.text = "ItemA:" + str(Global.ItemAcnt)
+	$HUD/VBox/ItemB.text = "ItemB:" + str(Global.ItemBcnt)
+	$HUD/VBox/ItemC.text = "ItemC:" + str(Global.ItemCcnt)
