@@ -40,9 +40,10 @@ func bullet(em_X,em_Y,deg, speed, delay=1):
 		await get_tree().create_timer(delay).timeout
 	
 	var bullet = Bullet.instantiate()
-	bullet.start(0, 0, deg, speed)
+	bullet.start(position.x, position.y, deg, speed)
+	#bullet.start(0, 0, deg, speed)	
 	bcnt += 1
 	bullet.name = "bullet" + str(bcnt)
 	# ルートノードを取得
-	add_child(bullet)
+	$"..".add_child(bullet)
 	#print(bullet.name)
