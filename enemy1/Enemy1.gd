@@ -4,13 +4,13 @@ func setPos(x, y):
 	position = Vector2(x, y)
 	em_X = x
 	em_Y = y
-func _on_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		# マウスの入力があった
-		if event.is_pressed():
-			# オブジェクトを消す
-			queue_free()
-			Common.emCount -=1
+#func _on_input_event(viewport, event, shape_idx):
+	#if event is InputEventMouseButton:
+		## マウスの入力があった
+		#if event.is_pressed():
+			## オブジェクトを消す
+			##queue_free() #シェイプとの接触で削除
+			#Common.emCount -=1
 
 #弾の設定
 var Bullet   = preload("res://enemy1/bulletE1.tscn")
@@ -47,3 +47,13 @@ func bullet(em_X,em_Y,deg, speed, delay=1):
 	# ルートノードを取得
 	$"..".add_child(bullet)
 	#print(bullet.name)
+
+
+
+
+func _on_area_entered(area):
+	if "clickShape" in area.name:		
+
+		queue_free() #out
+			
+	pass # Replace with function body.
