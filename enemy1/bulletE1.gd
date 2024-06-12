@@ -17,3 +17,12 @@ func _physics_process(delta):
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 	pass # Replace with function body.
+
+
+func _on_area_entered(area):
+
+	if "clickShape" in area.name:		
+
+		queue_free() #out
+			
+	pass # Replace with function body.
