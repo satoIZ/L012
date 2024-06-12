@@ -14,7 +14,7 @@ var iniFlag:bool = true
 #UIの設定
 var UI = preload("res://UI/hud.tscn")
 #@onready var hud_lab = $HUD/VBox/Label # 追加
-
+#var cross = load("res://mouseCorsor.png")
 func _ready():
 	iniFlag = true
 
@@ -22,12 +22,21 @@ func _ready():
 	add_child(addUI)
 	#print(addUI)
 	$HUD/VBox/Label.text = "stage:1"
-		
+
+
+	#Input.set_custom_mouse_cursor(cross)
+	
 var Items = ["ItemA","ItemB","ItemC"]
 
 var stageCnt:int = 1
 
+#時間の表示
+var elapsed_time:float
+
 func _process(delta):
+	#時間
+	elapsed_time += delta	
+	$HUD/VBox/elapsed_time.text = "経過時間"+"%7.1f" % elapsed_time	
 
 	var cnt = 0 #enemyのカウント
 	
@@ -97,3 +106,48 @@ func _process(delta):
 	$HUD/VBox/ItemA.text = "ItemA:" + str(Global.ItemAcnt)
 	$HUD/VBox/ItemB.text = "ItemB:" + str(Global.ItemBcnt)
 	$HUD/VBox/ItemC.text = "ItemC:" + str(Global.ItemCcnt)
+
+
+var corsor_x:float
+var corsor_y:float
+var leftPressFlag:bool = false
+
+func _input(event):
+   # Mouse in viewport coordinates.
+	if event is InputEventMouseButton:
+		print("Mouse Click/Unclick at: ", event.position)
+	elif event is InputEventMouseMotion:
+		print("Mouse Motion at: ", event.position)
+
+   # Print the size of the viewport.
+	print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
+
+	if Input.is_action_pressed("left_click"):
+	#if event.is_action_pressed("left_click"):		
+		# 左クリックの場合の処理
+		print("左クリック")
+		corsor_x = event.position.x
+		corsor_y = event.position.y
+		_clickShapeAdd()
+		leftPressFlag = true
+		pass
+
+#オート連射
+	if event is InputEventMouseMotion:
+		corsor_x = event.position.x
+		corsor_y = event.position.y
+		_clickShapeAdd()
+
+
+#clickShapeの設定
+var clickShape = preload("res://clickShape/click_shape.tscn")
+var i:int
+func _clickShapeAdd():
+
+		var clickShape = clickShape.instantiate()
+		
+		clickShape.setPos(corsor_x,corsor_y)
+		#Enemy.setPos(position.x + i*xPos+200, position.y + yPos)			
+		i += 1
+		clickShape.name = "clickShape" + str(i)
+		self.add_child(clickShape)
