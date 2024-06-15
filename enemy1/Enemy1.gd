@@ -1,5 +1,8 @@
 extends Area2D
 
+var hp:int = 10
+var maxhp:float = 10 # 最大HP 
+
 func setPos(x, y):
 	position = Vector2(x, y)
 	em_X = x
@@ -18,6 +21,17 @@ var count2:int
 var degcount:float
 var em_X:float
 var em_Y:float
+
+
+
+func _ready():
+
+	$"gauge".max_value =maxhp
+	$"gauge/Label".text = "Hp:" + str(hp)
+
+	# HPバー更新
+	_gauge()
+	
 
 func _physics_process(delta):
 	
@@ -49,9 +63,32 @@ func bullet(em_X,em_Y,deg, speed, delay=1):
 	#print(bullet.name)
 
 
+
 func _on_area_entered(area):
 	if "clickShape" in area.name:		
 
-		queue_free() #out
-			
+		hp -= 1
+		
+		if hp == 0:
+			queue_free() #out
+
+	# HPバー更新
+	_gauge()
+		
 	pass # Replace with function body.
+
+func _gauge():
+	# HPバー更新
+	var hpbar:TextureProgressBar = $"gauge"
+	var hpPer = _hpPer()
+	hpbar.value = maxhp * hpPer
+	
+	hpbar.tint_progress = lerp(Color.YELLOW, Color.YELLOW, hpPer)
+	hpbar.tint_under = lerp(Color.RED, Color.RED, hpPer)
+	#hpbar.tint_over = lerp(Color.WHITE, Color.WHITE, hpPer)
+	$"gauge/Label".text = "Hp:" +"%4.0f" %  hp
+	if hp <= 0:
+		$"gauge/Label".text = "Hp:0"
+
+func _hpPer():
+	return 1.0 * hp / maxhp;
