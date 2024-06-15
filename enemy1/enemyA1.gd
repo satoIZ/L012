@@ -33,10 +33,11 @@ var stageCnt:int = 1
 #時間の表示
 var elapsed_time:float
 
+
 func _process(delta):
 	#時間
 	elapsed_time += delta	
-	$HUD/VBox/elapsed_time.text = "経過時間"+"%7.1f" % elapsed_time	
+	$HUD/VBox/elapsed_time.text = "elapsed_time:"+"%7.1f" % elapsed_time	
 
 	var cnt = 0 #enemyのカウント
 	
@@ -120,7 +121,7 @@ func _input(event):
 		print("Mouse Motion at: ", event.position)
 
    # Print the size of the viewport.
-	print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
+	#print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
 
 	if Input.is_action_pressed("left_click"):
 	#if event.is_action_pressed("left_click"):		
@@ -151,3 +152,4 @@ func _clickShapeAdd():
 		i += 1
 		clickShape.name = "clickShape" + str(i)
 		self.add_child(clickShape)
+
