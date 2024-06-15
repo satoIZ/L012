@@ -49,8 +49,6 @@ func bullet(em_X,em_Y,deg, speed, delay=1):
 	#print(bullet.name)
 
 
-
-
 func _on_area_entered(area):
 	if "clickShape" in area.name:		
 
