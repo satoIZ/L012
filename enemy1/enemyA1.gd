@@ -13,7 +13,7 @@ var iniFlag:bool = true
 
 #UIの設定
 var UI = preload("res://UI/hud.tscn")
-#@onready var hud_lab = $HUD/VBox/Label # 追加
+#@onready var hud_lab = $HUD/VBox/stage # 追加
 #var cross = load("res://mouseCorsor.png")
 func _ready():
 	iniFlag = true
@@ -21,7 +21,7 @@ func _ready():
 	var addUI = UI.instantiate()
 	add_child(addUI)
 	#print(addUI)
-	$HUD/VBox/Label.text = "stage:1"
+	$HUD/VBox/stage.text = "stage:1"
 
 
 	#Input.set_custom_mouse_cursor(cross)
@@ -32,13 +32,16 @@ var stageCnt:int = 1
 
 #時間の表示
 var elapsed_time:float
-
+var stage_time:float
 
 func _process(delta):
 	#時間
 	elapsed_time += delta	
 	$HUD/VBox/elapsed_time.text = "elapsed_time:"+"%7.1f" % elapsed_time	
 
+	stage_time += delta	
+	$HUD/VBox/stage_time.text = "stage_time:"+"%7.1f" % stage_time	
+	
 	var cnt = 0 #enemyのカウント
 	
 	#-----ツリーのノード名を検索
@@ -90,7 +93,10 @@ func _process(delta):
 	
 		#ステージ番号を進める
 		stageCnt += 1
-		$HUD/VBox/Label.text = "stage:" + str(stageCnt)
+		$HUD/VBox/stage.text = "stage:" + str(stageCnt)
+	
+		#ステージタイム初期化
+		stage_time = 0
 	
 	#-----ツリーのノード名を検索
 	for child in get_children():
