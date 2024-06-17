@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtio67wi22xe1"]
+
+[ext_resource type="Script" path="res://defobj/defense_obj.gd" id="1_qij0q"]
+[ext_resource type="PackedScene" uid="uid://s7njlcasydkq" path="res://UI/gauge.tscn" id="2_poidy"]
+
+[sub_resource type="Curve2D" id="Curve2D_oenyh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 419, 682, 0, 0, 0, 0, 429, 63)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f33cx"]
+
+[node name="defenseObj" type="Node2D"]
+script = ExtResource("1_qij0q")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oenyh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(419, 682)
+rotation = -1.55464
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_f33cx")
+
+[node name="gauge" parent="Path2D" instance=ExtResource("2_poidy")]
+offset_left = 448.722
+offset_top = 699.482
+offset_right = 848.722
+offset_bottom = 739.482
+
+[connection signal="area_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_area_entered"]
