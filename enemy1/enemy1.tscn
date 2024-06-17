@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbtfuom7tky3"]
+[gd_scene load_steps=4 format=3 uid="uid://dbtfuom7tky3"]
 
 [ext_resource type="Script" path="res://enemy1/Enemy1.gd" id="1_ija6t"]
-[ext_resource type="Texture2D" uid="uid://c4jfy17sc6yer" path="res://image/bar.png" id="2_uo6m8"]
-[ext_resource type="Texture2D" uid="uid://dhw7ka4k5qgpc" path="res://image/bar_w.png" id="3_ioed8"]
-[ext_resource type="FontFile" uid="uid://gkmjx56aaqre" path="res://fonts/PressStart2P-Regular.ttf" id="4_rfad3"]
+[ext_resource type="PackedScene" uid="uid://s7njlcasydkq" path="res://UI/gauge.tscn" id="2_iedf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtoq3"]
 size = Vector2(50, 50)
@@ -14,27 +12,7 @@ script = ExtResource("1_ija6t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jtoq3")
 
-[node name="gauge" type="TextureProgressBar" parent="."]
-offset_left = -17.0
-offset_top = 30.0
-offset_right = 383.0
-offset_bottom = 70.0
-scale = Vector2(0.2, 0.5)
-texture_under = ExtResource("2_uo6m8")
-texture_over = ExtResource("3_ioed8")
-texture_progress = ExtResource("2_uo6m8")
-tint_under = Color(1, 0, 0, 1)
-tint_progress = Color(1, 1, 0, 1)
-
-[node name="Label" type="Label" parent="gauge"]
-layout_mode = 0
-offset_left = -10.0
-offset_top = 22.0
-offset_right = 200.0
-offset_bottom = 232.0
-scale = Vector2(2, 1)
-theme_override_fonts/font = ExtResource("4_rfad3")
-theme_override_font_sizes/font_size = 30
+[node name="gauge" parent="." instance=ExtResource("2_iedf1")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
