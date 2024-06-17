@@ -32,23 +32,24 @@ func _ready():
 	# HPバー更新
 	_gauge()
 	
-
+var Bnum:int = 0
 func _physics_process(delta):
 	
 	count2 = count2 + 1		
 	if count2 == 1:
 		#for i in range(1):
-		for i in range(2):
+		for i in range(1):
+			Bnum += 1
 			pass
 			#degcount += 10 +delta*10 #発射角度
 			degcount +=10
-			bullet(position.x,position.y,-90+degcount, 100, 1)
+			bullet(position.x,position.y,-90+degcount, 100,Bnum, 1)
 		await get_tree().create_timer(0.5).timeout
 		count2 = 0
 
 # 弾を撃つ
 var bcnt = 0
-func bullet(em_X,em_Y,deg, speed, delay=1):
+func bullet(em_X,em_Y,deg, speed,Bnum, delay=1):
 	if delay > 0:
 		# 遅延して発射する
 		await get_tree().create_timer(delay).timeout
@@ -57,7 +58,7 @@ func bullet(em_X,em_Y,deg, speed, delay=1):
 	bullet.start(position.x, position.y, deg, speed)
 	#bullet.start(0, 0, deg, speed)	
 	bcnt += 1
-	bullet.name = "bullet" + str(bcnt)
+	bullet.name = "bullet" + str(bcnt) +str(Bnum)
 	# ルートノードを取得
 	$"..".add_child(bullet)
 	#print(bullet.name)
